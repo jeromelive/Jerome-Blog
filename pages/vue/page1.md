@@ -1,4 +1,3 @@
-[[toc]]
 # Vue-cli@3.0
 
 ## 安装
@@ -27,14 +26,14 @@ module.default {
 ```
 
 ### publicPath
-Type: `String`
+- Type: `String`
 
 默认情况下输出的 index.html 内部的静态资源链接是不带路径的，即默认请求根目录，如果部署在
 https://jeromelive.github.io/Jerome-Blog/
 ，则设置 `publicPath` 为 `'/Jerome-Blog/'`
 
 ### configureWebpack
-Type: `Object | Function`
+- Type: `Object | Function`
 
 添加 loader 和 plugins 可以使用这个参数
 
