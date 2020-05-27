@@ -8,6 +8,7 @@ module.exports = {
   markdown: {
       lineNumbers: true
   },
+  base: '/Jerome-Blog/',
   dest: 'docs',
   serviceWorker: true,
   themeConfig: {    
