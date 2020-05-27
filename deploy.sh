@@ -5,7 +5,7 @@ set -e
 npm run build
 
 # 进入打包好的文件夹
-cd docs/.vuepress/dist
+# cd docs/.vuepress/dist
 
 # 创建git的本地仓库，提交修改
 # git init
