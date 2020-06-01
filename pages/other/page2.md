@@ -1,8 +1,8 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-27 21:50:25
- * @LastEditTime: 2020-06-01 21:17:12
- * @LastEditors: your name
+ * @LastEditTime: 2020-06-01 21:21:30
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Jerome-Blog\pages\other\page2.md
 --> 
@@ -19,7 +19,7 @@
 
 实现： 攻击者通过给用户发送带有恶意脚本代码参数的URL，当URL地址被打开时，特有的恶意代码参数被HTML解析、执行。
 
-![](/other-page2-1.png)
+![](/Jerome-Blog/other-page2-1.png)
 
 - `存储型XSS（持久性XSS）`
 
@@ -44,7 +44,7 @@
 
 CSRF就是`利用你所在网站的登录的状态，以你的名义向网站发送恶意请求`。CSRF能做的事情包括利用你的身份发邮件、发短信、进行交易转账等，盗取你的账号，甚至购买商品，虚拟货币转账......造成的问题包括：个人隐私泄露以及财产安全
 
-![](/other-page2-2.png)
+![](/Jerome-Blog/other-page2-2.png)
 
 - 例子
   
