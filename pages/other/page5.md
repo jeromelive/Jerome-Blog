@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-06-01 20:50:10
- * @LastEditTime: 2020-06-01 21:05:51
+ * @LastEditTime: 2020-06-01 21:15:31
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Jerome-Blog\pages\other\page5.md
@@ -51,7 +51,7 @@
 HTTPS其实是有两部分组成：HTTP + SSL / TLS，也就是在HTTP上又加了一层处理加密信息的模块。服务端和客户端的信息传输都会通过TLS进行加密，所以传输的数据都是加密后的数据。具体是如何进行加密，解密，验证的，且看下图。
 
 
-![](/other-page5-1.webp)
+![](/other-page5-1.png)
 
 1. 客户端发起HTTPS请求
 
