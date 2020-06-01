@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-05-26 21:53:40
+ * @LastEditTime: 2020-06-01 20:28:58
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \Jerome-Blog\.vuepress\config.js
+ */ 
 module.exports = {
     title: '博客', // 显示在左上角的网页名称以及首页在浏览器标签显示的title名称
     description: '前端记录', // meta 中的描述文字，用于SEO
@@ -44,6 +52,7 @@ module.exports = {
                     children: [
                         ['other/page1.md', '深色模式开发'],
                         ['other/page2.md', '前端安全'],
+                        ['other/page3.md', '数字动态累加特效'],
                     ]
                 },
             ]
