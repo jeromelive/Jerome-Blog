@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2020-05-26 21:53:40
- * @LastEditTime: 2020-06-01 20:28:58
- * @LastEditors: your name
+ * @LastEditTime: 2020-06-01 20:49:57
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Jerome-Blog\.vuepress\config.js
  */ 
@@ -53,6 +53,8 @@ module.exports = {
                         ['other/page1.md', '深色模式开发'],
                         ['other/page2.md', '前端安全'],
                         ['other/page3.md', '数字动态累加特效'],
+                        ['other/page4.md', '本地缓存静态资源'],
+                        ['other/page5.md', '聊聊各种加密以及加密在HTTPS中的应用'],
                     ]
                 },
             ]
