@@ -1,13 +1,13 @@
 /*
  * @Author: your name
  * @Date: 2020-05-26 21:53:40
- * @LastEditTime: 2020-06-01 20:49:57
+ * @LastEditTime: 2020-06-02 09:54:01
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Jerome-Blog\.vuepress\config.js
  */ 
 module.exports = {
-    title: '博客', // 显示在左上角的网页名称以及首页在浏览器标签显示的title名称
+    title: `Jerome's Blog`, // 显示在左上角的网页名称以及首页在浏览器标签显示的title名称
     description: '前端记录', // meta 中的描述文字，用于SEO
     // 注入到当前页面的 HTML <head> 中的标签
     head: [
