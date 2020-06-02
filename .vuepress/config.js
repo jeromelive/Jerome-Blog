@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-26 21:53:40
- * @LastEditTime: 2020-06-02 09:54:01
+ * @LastEditTime: 2020-06-02 18:00:07
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Jerome-Blog\.vuepress\config.js
@@ -55,6 +55,7 @@ module.exports = {
                         ['other/page3.md', '数字动态累加特效'],
                         ['other/page4.md', '本地缓存静态资源'],
                         ['other/page5.md', '聊聊各种加密以及加密在HTTPS中的应用'],
+                        ['other/page6.md', 'localStorage 使用'],
                     ]
                 },
             ]
