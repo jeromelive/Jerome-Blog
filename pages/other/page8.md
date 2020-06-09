@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-06-08 21:06:29
- * @LastEditTime: 2020-06-09 09:40:21
+ * @LastEditTime: 2020-06-09 09:57:47
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Jerome-Blog\pages\other\page8.md
@@ -105,7 +105,7 @@ css 代码如下修改能修复该问题，`main` 添加了独立的滚动条
 
 ## 实现 IOS 下拉弹性效果与背景颜色
 
-![](/Jerome-Blog/other-page8-2.jpg)
+![](/Jerome-Blog/other-page8-2.gif)
 
 ```html
 <div class="home-wrap">
