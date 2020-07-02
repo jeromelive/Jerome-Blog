@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-26 21:53:40
- * @LastEditTime: 2020-06-08 21:06:38
+ * @LastEditTime: 2020-07-02 17:54:29
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Jerome-Blog\.vuepress\config.js
@@ -57,7 +57,8 @@ module.exports = {
                         ['other/page5.md', '聊聊各种加密以及加密在HTTPS中的应用'],
                         ['other/page6.md', 'localStorage 使用'],
                         ['other/page7.md', 'Canvas'],
-                        ['other/page8.md', '实现 IOS 下拉弹性效果与背景']
+                        ['other/page8.md', '实现 IOS 下拉弹性效果与背景'],
+                        ['other/page9.md', 'web worker 前端多线程'],
                     ]
                 },
             ]
