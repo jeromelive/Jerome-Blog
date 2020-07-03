@@ -1,14 +1,14 @@
 <!--
  * @Author: your name
  * @Date: 2020-06-08 21:06:29
- * @LastEditTime: 2020-06-09 09:57:47
+ * @LastEditTime: 2020-07-03 15:10:26
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Jerome-Blog\pages\other\page8.md
 --> 
 # 实现 IOS 下拉弹性效果与背景颜色
 
-## -webkit-overflow-scrolling
+## 一、-webkit-overflow-scrolling
 `-webkit-overflow-scrolling` 属性控制元素在移动设备上是否使用滚动回弹效果.
 > `auto`：使用普通滚动, 当手指从触摸屏上移开，滚动会立即停止
 >
@@ -16,7 +16,7 @@
 
 移动端开发中，使用 `overflow:scroll` 的元素，滚动时会出现不够顺畅的情况，这时候使用 `-webkit-overflow-scrolling:touch` 能解决不顺畅问题
 
-## header、main、footer 布局，safari 滚动不顺畅问题解决方案
+## 二、header、main、footer 布局，safari 滚动不顺畅问题解决方案
 
 `main` 部分内容超过屏幕尺寸，出现滚动效果，但在低版本的 ios 中，safari 内滚动会出现不卡顿问题，体验十分不好。
 
@@ -103,7 +103,7 @@ css 代码如下修改能修复该问题，`main` 添加了独立的滚动条
 }
 ```
 
-## 实现 IOS 下拉弹性效果与背景颜色
+## 三、实现 IOS 下拉弹性效果与背景颜色
 
 ![](/Jerome-Blog/other-page8-2.gif)
 

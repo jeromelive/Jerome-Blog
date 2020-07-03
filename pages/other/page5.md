@@ -1,14 +1,14 @@
 <!--
  * @Author: your name
  * @Date: 2020-06-01 20:50:10
- * @LastEditTime: 2020-06-01 21:15:31
+ * @LastEditTime: 2020-07-03 15:10:48
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Jerome-Blog\pages\other\page5.md
 --> 
 # 聊聊各种加密以及加密在HTTPS中的应用
 
-## 目前常用的加密算法主要分成三类：
+## 一、目前常用的加密算法主要分成三类：
 - 对称加密算法
 - 非对称加密算法
 - 消息摘要算法
@@ -46,7 +46,7 @@
 
 - MAC算法：带有密码信息的信息摘要算法，是对MD和SHA算法的演变和改进，包括HmacMD2、HmacMD4、HmacMD5、HmacSHA-256等。
 
-## 对称/非对称加密算法在HTTPS协议中的应用
+## 二、对称/非对称加密算法在HTTPS协议中的应用
 
 HTTPS其实是有两部分组成：HTTP + SSL / TLS，也就是在HTTP上又加了一层处理加密信息的模块。服务端和客户端的信息传输都会通过TLS进行加密，所以传输的数据都是加密后的数据。具体是如何进行加密，解密，验证的，且看下图。
 
