@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2020-05-26 21:53:40
- * @LastEditTime: 2020-07-13 15:04:51
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-07-17 18:56:01
+ * @LastEditors: zhaojunyun-jk
  * @Description: In User Settings Edit
  * @FilePath: \Jerome-Blog\.vuepress\config.js
  */ 
@@ -61,7 +61,7 @@ module.exports = {
                         ['other/page8.md', '实现 IOS 下拉弹性效果与背景'],
                         ['other/page9.md', 'web worker 前端多线程'],
                         ['other/page10.md', 'Event Loop'],
-                        ['other/page11.md', '移动端点击延迟解决方案'],
+                        ['other/page11.md', 'Zepto 模拟事件'],
                     ]
                 },
             ]
