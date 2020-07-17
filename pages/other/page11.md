@@ -1,12 +1,12 @@
 <!--
  * @Author: your name
  * @Date: 2020-07-13 15:02:34
- * @LastEditTime: 2020-07-17 18:44:27
+ * @LastEditTime: 2020-07-17 18:58:31
  * @LastEditors: zhaojunyun-jk
  * @Description: In User Settings Edit
  * @FilePath: \Jerome-Blog\pages\other\page11.md
 --> 
-# Zepto 模拟 touch 操作
+# Zepto 的 touch 模块
 
 ## 一、概要
 

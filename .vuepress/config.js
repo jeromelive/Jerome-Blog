@@ -61,7 +61,7 @@ module.exports = {
                         ['other/page8.md', '实现 IOS 下拉弹性效果与背景'],
                         ['other/page9.md', 'web worker 前端多线程'],
                         ['other/page10.md', 'Event Loop'],
-                        ['other/page11.md', 'Zepto 模拟事件'],
+                        ['other/page11.md', 'Zepto 的 touch 模块'],
                     ]
                 },
             ]
