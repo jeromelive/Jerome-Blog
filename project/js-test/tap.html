@@ -1,0 +1,209 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-13 16:55:18
+ * @LastEditTime: 2020-07-17 16:00:25
+ * @LastEditors: zhaojunyun-jk
+ * @Description: In User Settings Edithtml:
+ * @FilePath: \Jerome-Blog\project\js-test\tap.html
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #tap {
+      width: 200px;
+      height: 2000px;
+      margin: 100px auto;
+      background: black;
+    }
+  </style>
+</head>
+<body>
+  <div id="tap"></div>
+  <script>
+    // Element.prototype.trigger = function (eventName) {
+    //   this.dispatchEvent(new Event(eventName))
+    // }
+    // document.querySelector('#tap').addEventListener('click', click, false)
+    // document.querySelector('#tap').addEventListener('tap', tap, false)
+    // function click(event) {
+    //   event.target.trigger('tap')
+    //   console.log(event)
+    // }
+    // function tap() {
+    //   console.log('tap', 11111)
+    // }
+
+    let touch = {}, tapTimeout, touchTimeout, longTapTimeout, longTapDelay = 750, swipeTimeout
+    let now, delta, deltaX = 0, deltaY = 0, firstTouch, _isPointerType
+
+    function swipeDirection(x1, x2, y1, y2) {
+      return Math.abs(x1 - x2) >=
+      Math.abs(y1 - y2) ? (x1 - x2 > 0 ? 'Left' : 'Right') : (y1 - y2 > 0 ? 'Up' : 'Down')
+    }
+
+    function longTap() {
+      console.log(1)
+      longTapTimeout = null
+      touch.el && touch.el.trigger('longTap')
+      touch = {}
+    }
+
+    function cancelLongTap() {
+      if (longTapTimeout) clearTimeout(longTapTimeout)
+      longTapTimeout = null
+    }
+
+    function isPointerEventType(e, type){
+      return (e.type == 'pointer'+type ||
+        e.type.toLowerCase() == 'mspointer'+type)
+    }
+
+    function isPrimaryTouch(event){
+      console.log(event.pointerType, event.MSPOINTER_TYPE_TOUCH, event.isPrimary)
+      return (event.pointerType == 'touch' ||
+        event.pointerType == event.MSPOINTER_TYPE_TOUCH)
+        && event.isPrimary
+    }
+
+    function cancelAll() {
+      if (touchTimeout) clearTimeout(touchTimeout)
+      if (tapTimeout) clearTimeout(tapTimeout)
+      if (swipeTimeout) clearTimeout(swipeTimeout)
+      if (longTapTimeout) clearTimeout(longTapTimeout)
+      touchTimeout = tapTimeout = swipeTimeout = longTapTimeout = null
+      touch = {}
+    }
+
+    function setup() {
+      // tap, singleTap, doubleTap,  longTap, swipe, swipeLeft, swipeRight, swipeUp, swipeDown 
+      let eventMap = 'ontouchstart' in document ?
+        {'down': 'touchstart', 'up': 'touchend', 'move': 'touchmove', 'cancel': 'touchcancel'} :
+        'onpointerdown' in document ?
+        {'down': 'pointerdown', 'up': 'pointerup', 'move': 'pointermove', 'cancel': 'pointercancel'} :
+        'onmspointerdown' in document ?
+        {'down': 'MSPointerDown', 'up': 'MSPointerUp', 'move': 'MSPointerMove', 'cancel': 'MSPointerCancel'}:
+        false
+
+      if (!eventMap) return
+      
+      Element.prototype.trigger = function (eventName) {
+        this.dispatchEvent(new Event(eventName))
+      }
+  
+      function down(e) {
+        // _isPointerType = isPointerEventType(e, 'down')
+        if((_isPointerType = isPointerEventType(e, 'down')) && !isPrimaryTouch(e)) return
+        cancelLongTap()
+        now = Date.now()
+        delta = now - (touch.last || now)
+        if(delta > 0 && delta <= 250) touch.isDoubleTap = true
+        firstTouch = _isPointerType ? e : e.touches[0]
+        touch.el = firstTouch.target
+        touchTimeout && clearTimeout(touchTimeout)
+        longTapTimeout = setTimeout(longTap, longTapDelay)
+        touch.x1 = firstTouch.pageX
+        touch.y1 = firstTouch.pageY
+        touch.last = now
+      }
+
+      function move(e) {
+        if((_isPointerType = isPointerEventType(e, 'move')) && !isPrimaryTouch(e)) return
+        // _isPointerType = isPointerEventType(e, 'move')
+        cancelLongTap()
+        firstTouch = _isPointerType ? e : e.touches[0]
+        touch.x2 = firstTouch.pageX
+        touch.y2 = firstTouch.pageY
+  
+        deltaX += Math.abs(touch.x1 - touch.x2)
+        deltaY += Math.abs(touch.y1 - touch.y2)
+      }
+      
+      function up(e) {
+        if((_isPointerType = isPointerEventType(e, 'up')) && !isPrimaryTouch(e)) return
+        // _isPointerType = isPointerEventType(e, 'up')
+        cancelLongTap()
+        if((touch.x2 && Math.abs(touch.x1 - touch.x2) > 30) ||
+        (touch.y2 && Math.abs(touch.y1 - touch.y2) > 30)) {
+          swipeTimeout = setTimeout(function() {
+            if(touch.el) {
+              touch.el.trigger('swipe')
+              touch.el.trigger('swipe' + (swipeDirection(touch.x1, touch.x2, touch.y1, touch.y2)))
+            }
+            touch = {}
+          }, 0)
+        } else if ('last' in touch){
+          if(deltaX < 30 && deltaY < 30) {
+            now = Date.now()
+            touch.el && touch.el.trigger('tap')
+            if(touch.isDoubleTap) {
+              touch.el && touch.el.trigger('doubleTap')
+              touch = {}
+            } else {
+              touchTimeout = setTimeout(function() {
+                clearTimeout(touchTimeout)
+                touch.el && touch.el.trigger('singleTap')
+                touch = {}
+              }, 250)
+            }
+          } else {
+            touch = {}
+          }
+        }
+        deltaX = deltaY = 0
+      }
+
+      function cancel(e) {
+        cancelAll()
+      }
+  
+      window.addEventListener(eventMap.down, down)
+      window.addEventListener(eventMap.up, up)
+      window.addEventListener(eventMap.move, move)
+      window.addEventListener(eventMap.cancel, cancel)
+      window.addEventListener('scroll', cancelAll)
+    }
+    
+    setup()
+    document.querySelector('#tap').addEventListener('tap', tap, false)
+    document.querySelector('#tap').addEventListener('singleTap', singleTap, false)
+    document.querySelector('#tap').addEventListener('doubleTap', doubleTap, false)
+    document.querySelector('#tap').addEventListener('longTap', longTap, false)
+    document.querySelector('#tap').addEventListener('swipe', swipe, false)
+    document.querySelector('#tap').addEventListener('swipeLeft', swipeLeft, false)
+    document.querySelector('#tap').addEventListener('swipeRight', swipeRight, false)
+    document.querySelector('#tap').addEventListener('swipeUp', swipeUp, false)
+    document.querySelector('#tap').addEventListener('swipeDown', swipeDown, false)
+    function tap() {
+      console.log('tap')
+    }
+    function singleTap() {
+      console.log('singleTap')
+    }
+    function doubleTap() {
+      console.log('doubleTap')
+    }
+    function longTap() {
+      console.log('longTap')
+    }
+    function swipe() {
+      console.log('swipe')
+    }
+    function swipeLeft() {
+      console.log('swipeLeft')
+    }
+    function swipeRight() {
+      console.log('swipeRight')
+    }
+    function swipeUp() {
+      console.log('swipeUp')
+    }
+    function swipeDown() {
+      console.log('swipeDown')
+    }
+  </script>
+</body>
+</html>
