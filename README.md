@@ -1,11 +1,3 @@
-<!--
- * @Description: 
- * @Version: 2.0
- * @Autor: zhaojunyun-jk
- * @Date: 2020-05-26 21:53:40
- * @LastEditors: zhaojunyun-jk
- * @LastEditTime: 2020-07-21 10:29:55
---> 
 ---
 home: true
 heroImage: /logo.svg
