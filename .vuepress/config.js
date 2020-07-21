@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-26 21:53:40
- * @LastEditTime: 2020-07-17 18:56:01
+ * @LastEditTime: 2020-07-20 19:54:36
  * @LastEditors: zhaojunyun-jk
  * @Description: In User Settings Edit
  * @FilePath: \Jerome-Blog\.vuepress\config.js
@@ -62,6 +62,8 @@ module.exports = {
                         ['other/page9.md', 'web worker 前端多线程'],
                         ['other/page10.md', 'Event Loop'],
                         ['other/page11.md', 'Zepto 的 touch 模块'],
+                        ['other/page12.md', '基于 Zepto 实现图片放大缩小功能'],
+                        ['other/page13.md', '了解 Javascript 深浅克隆'],
                     ]
                 },
             ]
