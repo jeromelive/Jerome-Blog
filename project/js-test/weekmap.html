@@ -1,0 +1,77 @@
+<!--
+ * @Description: 
+ * @Version: 2.0
+ * @Autor: zhaojunyun-jk
+ * @Date: 2020-07-21 11:02:34
+ * @LastEditors: zhaojunyun-jk
+ * @LastEditTime: 2020-07-21 15:29:09
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="example">example</div>
+  <script>
+    // let wm = new WeakMap()
+    // let example = document.getElementById('example')
+    // wm.set(example, 'some information')
+    // console.log(wm.get(example))
+    // example = null
+    // console.log(wm.get(example))
+
+    // const _counter = new WeakMap();
+    // const _action = new WeakMap();
+
+    const _counter = new WeakMap()
+    const _action = new WeakMap()
+    
+    class Countdown {
+      constructor(counter, action) {
+        _counter.set(this, counter)
+        _action.set(this, action)
+      }
+      
+      dec() {
+        let counter = _counter.get(this)
+        if(counter < 1) return
+        counter--
+        _counter.set(this, counter)
+        if(counter === 0) {
+          _action.get(this)()
+        }
+      }
+    }
+
+    let c = new Countdown(2, () => console.log('DONE'));
+    c.dec()
+    c.dec()
+    console.log(_counter.get(c))
+    console.log(_action.get(c))
+    c = null
+    console.log(_counter.get(c))
+    console.log(_action.get(c))
+
+    const myMap = new Map().set(true, 7).set({foo:3}, ['abc'])
+    console.log(...myMap)
+    const myMap1 = new Map([...myMap])
+    console.log(myMap1)
+
+    function mapToObj(map) {
+      let obj = Object.create(null)
+      for(let [k,v] of map) {
+        obj[k] = v
+      }
+      return obj
+    }
+    let obj = mapToObj(myMap1)
+    console.log(obj)
+
+    let myMap2 = new Map(Object.entries(obj))
+    console.log(myMap2)
+  </script>
+</body>
+</html>
