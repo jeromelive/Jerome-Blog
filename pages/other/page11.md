@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-07-13 15:02:34
- * @LastEditTime: 2020-07-20 11:15:40
+ * @LastEditTime: 2020-07-29 16:11:25
  * @LastEditors: zhaojunyun-jk
  * @Description: In User Settings Edit
  * @FilePath: \Jerome-Blog\pages\other\page11.md
@@ -225,16 +225,21 @@ Zepto 提供了 `tap`, `singleTap`, `doubleTap`,  `longTap`, `swipe`, `swipeLeft
 
 ```html
 <script>
-  let now, delta, deltaX = 0, deltaY = 0, firstTouch, touch = {}
-  let touchTimeout, longTapTimeout
+  let now, delta, deltaX = 0, deltaY = 0, firstTouch, touch = {}, initialized = false
+  let tapTimeout, touchTimeout, longTapTimeout, swipeTimeout
 
   function swipeDirection(x1, x2, y1, y2) {
     // 比较 x , y 的移动距离的绝对值，然后计算是方向
     return Math.abs(x1 - x2) >=
     Math.abs(y1 - y2) ? (x1 - x2 > 0 ? 'Left' : 'Right') : (y1 - y2 > 0 ? 'Up' : 'Down')
   }
+
   Element.prototype.trigger = function (eventName) {
-    this.dispatchEvent(new Event(eventName))
+    // 创建事件，设置冒泡
+    var event = document.createEvent('Events'), bubbles = true
+    event.initEvent(eventName, bubbles, true)
+    event.x = touch.x1
+    this.dispatchEvent(event)
   }
 
   function longTap() {
@@ -258,73 +263,82 @@ Zepto 提供了 `tap`, `singleTap`, `doubleTap`,  `longTap`, `swipe`, `swipeLeft
   }
 
   function setup() {
-    function down(e) {
-      cancelLongTap()
-      now = Date.now()
-      delta = now - (touch.last || now)
-      if(delta > 0 && delta <= 250) touch.isDoubleTap = true
-      touchTimeout && clearTimeout(touchTimeout)
-      
-      longTapTimeout = setTimeout(function() {
-        longTap()
-      }, 750)
-
-      firstTouch = e.touches[0]
-      touch.x1 = firstTouch.pageX
-      touch.y1 = firstTouch.pageY
-      touch.el = firstTouch.target
-      touch.last = now
-    }
-    function move(e) {
-      cancelLongTap()
-      firstTouch = e.touches[0]
-      touch.x2 = firstTouch.pageX
-      touch.y2 = firstTouch.pageY
-
-      deltaX += Math.abs(touch.x1 - touch.x2)
-      deltaY += Math.abs(touch.y1 - touch.y2)
-    }
-    function up(e) {
-      cancelLongTap()
-      // 移动距离操作 30 为 swipe 类型事件
-      if((touch.x2 && Math.abs(touch.x1 - touch.x2) > 30) ||
-        (touch.y2 && Math.abs(touch.y1 - touch.y2) > 30)) {
-          swipeTimeout = setTimeout(function() {
-            if(touch.el) {
-              touch.el.trigger('swipe')
-              touch.el.trigger('swipe' + (swipeDirection(touch.x1, touch.x2, touch.y1, touch.y2)))
-            }
-            touch = {}
-          }, 0)
-      } else if('last' in touch) {
-        if(deltaX < 30 && deltaY < 30) {
-          touch.el && touch.el.trigger('tap')
-
-          if(touch.isDoubleTap) {
-            touch.el && touch.el.trigger('doubleTap')
-            touch = {}
-          } else {
-            touchTimeout = setTimeout(function() {
-              clearTimeout(touchTimeout)
-              touch.el && touch.el.trigger('singleTap')
-              touch = {}
-            }, 250)
-          }
-          
-        } else {
-          touch = {}
+    if(!initialized) {
+      // 只执行一次
+      function down(e) {
+        cancelLongTap()
+        now = Date.now()
+        delta = now - (touch.last || now)
+        if(delta > 0 && delta <= 250) touch.isDoubleTap = true
+        touchTimeout && clearTimeout(touchTimeout)
+        
+        longTapTimeout = setTimeout(function() {
+          longTap()
+        }, 750)
+    
+        firstTouch = e.touches[0]
+        touch.x1 = firstTouch.pageX
+        touch.y1 = firstTouch.pageY
+        touch.el = firstTouch.target
+        touch.last = now
+        window.firstTouch = {
+          x: firstTouch.pageX,
+          y: firstTouch.pageY
         }
       }
-      deltaX = deltaY = 0
+      function move(e) {
+        cancelLongTap()
+        firstTouch = e.touches[0]
+        touch.x2 = firstTouch.pageX
+        touch.y2 = firstTouch.pageY
+    
+        deltaX += Math.abs(touch.x1 - touch.x2)
+        deltaY += Math.abs(touch.y1 - touch.y2)
+      }
+      function up(e) {
+        cancelLongTap()
+        // 移动距离操作 30 为 swipe 类型事件
+        if((touch.x2 && Math.abs(touch.x1 - touch.x2) > 30) ||
+          (touch.y2 && Math.abs(touch.y1 - touch.y2) > 30)) {
+            swipeTimeout = setTimeout(function() {
+              if(touch.el) {
+                console.log(touch.el)
+                touch.el.trigger('swipe')
+                touch.el.trigger('swipe' + (swipeDirection(touch.x1, touch.x2, touch.y1, touch.y2)))
+              }
+              touch = {}
+            }, 0)
+        } else if('last' in touch) {
+          if(deltaX < 30 && deltaY < 30) {
+            tapTimeout = setTimeout(function() {
+              touch.el && touch.el.trigger('tap')
+              if(touch.isDoubleTap) {
+                touch.el && touch.el.trigger('doubleTap')
+                touch = {}
+              } else {
+                touchTimeout = setTimeout(function() {
+                  clearTimeout(touchTimeout)
+                  touch.el && touch.el.trigger('singleTap')
+                  touch = {}
+                }, 250)
+              }
+            }, 0)
+          } else {
+            touch = {}
+          }
+        }
+        deltaX = deltaY = 0
+      }
+    
+      initialized = true
+      window.addEventListener('touchstart', down)
+      window.addEventListener('touchmove', move)
+      window.addEventListener('touchend', up)
+      // 清除定时器与初始化数据
+      window.addEventListener('touchcancel', cancelAll)
+      // 滚动事件清除定时器与初始化数据
+      window.addEventListener('scroll', cancelAll)
     }
-
-    window.addEventListener('touchstart', down)
-    window.addEventListener('touchmove', move)
-    window.addEventListener('touchend', up)
-    // 清除定时器与初始化数据
-    window.addEventListener('touchcancel', cancel)
-    // 滚动事件清除定时器与初始化数据
-    window.addEventListener('scroll', cancelAll)
   }
   setup()
   document.querySelector('#tap').addEventListener('swipe', swipe, false)

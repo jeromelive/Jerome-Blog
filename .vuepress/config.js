@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-26 21:53:40
- * @LastEditTime: 2020-07-21 11:07:09
+ * @LastEditTime: 2020-07-28 20:02:54
  * @LastEditors: zhaojunyun-jk
  * @Description: In User Settings Edit
  * @FilePath: \Jerome-Blog\.vuepress\config.js
@@ -65,6 +65,7 @@ module.exports = {
                         ['other/page12.md', '基于 Zepto 实现图片放大缩小功能'],
                         ['other/page13.md', '了解 Javascript 深浅克隆'],
                         ['other/page14.md', 'Set 和 Map 数据结构'],
+                        ['other/page15.md', 'JavaScript 知识点'],
                     ]
                 },
             ]
