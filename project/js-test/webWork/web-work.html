@@ -1,0 +1,64 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-02 16:26:41
+ * @LastEditTime: 2020-07-02 17:21:34
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \undefinedc:\Users\zhaojunyun-jk\Desktop\web-work.html
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="result"></div>
+    <!-- <script id="worker" type="app/worker">
+        addEventListener('message', function() {
+            postMessage('some message')
+        }, false)
+    </script> -->
+    <script>
+        // var worker = new Worker('work.js')
+        // worker.onmessage = function(event) {
+        //     console.log('Received message ' + event.data);
+        //     // doSometing()
+        // }
+        // // function doSometing() {
+        // //     worker.postMessage('Work done!')
+        // // }
+        // worker.postMessage({
+        //     cmd: 'start',
+        //     msg: 'start'
+        // })
+        // // worker.terminate()
+
+        // var uInt8Array = new Uint8Array(new ArrayBuffer(10))
+        // for(var i = 0; i < uInt8Array.length; ++i) {
+        //     uInt8Array[i] = i*2
+        // }
+
+        // var worker = new Worker('work.js')
+        // worker.onmessage = function(event) {
+        //     console.log('Received message ' + event.data);
+        // }
+        // worker.postMessage(uInt8Array)
+
+        // var blob = new Blob([document.querySelector('#worker').textContent])
+        // var url = window.URL.createObjectURL(blob)
+        // var worker = new Worker(url)
+
+        // worker.onmessage = function(e) {
+        //     console.log('Received message ' + event.data);
+        // }
+        // worker.postMessage('')
+
+        var worker = new Worker('work.js')
+        worker.onmessage = function(event) {
+            document.getElementById('result').textContent = event.data
+        }
+    </script>
+</body>
+</html>
