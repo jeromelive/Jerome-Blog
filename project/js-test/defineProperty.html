@@ -1,0 +1,92 @@
+<!--
+ * @Description: 
+ * @Version: 2.0
+ * @Autor: zhaojunyun-jk
+ * @Date: 2020-08-19 16:28:45
+ * @LastEditors: zhaojunyun-jk
+ * @LastEditTime: 2020-08-19 21:07:41
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    new Vue({
+      el: '#app',
+      template: `
+        <div>{{a.a}}</div>
+      `,
+      data() {
+        return {
+          a: {
+            a: 1
+          }
+        }
+      }
+    })
+    let data = {
+      a: {
+        a: 1
+      }
+    }
+    let Target = null
+    walk(data)
+    function walk (obj) {
+      for (let key in obj) {
+        console.log(Target)
+        let dep = []
+        let val = obj[key]
+        const nativeString = Object.prototype.toString.call(val)
+        if(nativeString === '[object Object]') {
+          walk(val)
+        }
+        Object.defineProperty(obj, key, {
+          set(newVal) {
+            if(val === newVal) {
+              return
+            }
+            val = newVal
+            dep.forEach(fn => fn())
+            if(Object.prototype.toString.call(val) === '[object Object]') {
+              walk(val)
+            }
+          },
+          get() {
+            console.log(val)
+            if(Target) {
+              dep.push(Target)
+            }
+            return val
+          }
+        })
+      }
+    }
+    function $watch(exp, fn) {
+      Target = fn
+      let obj = data
+      let pathArr
+      if(typeof exp === 'Function') {
+        exp()
+        Target = null
+        return
+      }
+      if(/\./.test(exp)) {
+        pathArr = exp.split('.')
+        pathArr.forEach(key => {
+          obj = obj[key]
+        })
+        Target = null
+        return
+      }
+      data[key]
+      Target = null
+    }
+  </script>
+</body>
+</html>

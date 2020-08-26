@@ -1,8 +1,8 @@
 <!--
  * @Author: your name
  * @Date: 2020-07-03 10:35:24
- * @LastEditTime: 2020-07-03 15:10:01
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-08-25 15:09:10
+ * @LastEditors: zhaojunyun-jk
  * @Description: In User Settings Edit
  * @FilePath: \Jerome-Blog\pages\other\page10.md
 --> 
@@ -169,3 +169,6 @@ new Promise((resolve) => {
 > 6.同步代码运行结果是 `“1，3”`<br>
 > 7.然后检查微任务队列，输出 `“5，4”`<br>
 > 8.最后执行宏任务队列，输出 `“2”`
+
+## 五、总结
+事件循环会先执行顺序为同步代码->微任务->宏任务。其中两个不同宏任务之间可能穿插着 UI 的重渲染，那么只需要在微任务中把所有在 UI 重渲染之前需要更新的数据全部更新，这样只需要一次重渲染就能得到最新的 DOM 了，这样是 Vue 优化页面性能的一种方式。Vue 的 nextTick 方法的主要逻辑是优先使用 Promise，不兼容的情况下才降级使用 setTimeout。

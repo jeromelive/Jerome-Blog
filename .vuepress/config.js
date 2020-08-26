@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-26 21:53:40
- * @LastEditTime: 2020-08-12 13:57:08
+ * @LastEditTime: 2020-08-26 11:14:24
  * @LastEditors: zhaojunyun-jk
  * @Description: In User Settings Edit
  * @FilePath: \Jerome-Blog\.vuepress\config.js
@@ -43,7 +43,8 @@ module.exports = {
                     sidebarDepth: 1,    // 可选的, 默认值是 1
                     children: [
                         ['vue/page1.md', 'vue-cli@3.0 相关配置'],
-                        ['vue/page2.md', 'directive']
+                        ['vue/page2.md', 'directive'],
+                        ['vue/page3.md', 'Vue 国际化'],
                     ]
                 },
                 {
@@ -70,6 +71,7 @@ module.exports = {
                         ['other/page17.md', '国际化方案'],
                         ['other/page18.md', '深入了解 js 柯里化'],
                         ['other/page19.md', 'git 常用操作'],
+                        ['other/page20.md', 'flow'],
                     ]
                 }
             ]
