@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-26 21:53:40
- * @LastEditTime: 2020-08-26 11:14:24
+ * @LastEditTime: 2020-08-26 11:27:16
  * @LastEditors: zhaojunyun-jk
  * @Description: In User Settings Edit
  * @FilePath: \Jerome-Blog\.vuepress\config.js
@@ -68,7 +68,7 @@ module.exports = {
                         ['other/page14.md', 'Set 和 Map 数据结构'],
                         ['other/page15.md', 'JavaScript 知识点'],
                         ['other/page16.md', 'head 和 body 内的 JS 区别'],
-                        ['other/page17.md', '国际化方案'],
+                        ['other/page17.md', 'JsBridge：Web 和客户端双向通信'],
                         ['other/page18.md', '深入了解 js 柯里化'],
                         ['other/page19.md', 'git 常用操作'],
                         ['other/page20.md', 'flow'],
