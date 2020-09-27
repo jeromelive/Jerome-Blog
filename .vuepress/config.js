@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-26 21:53:40
- * @LastEditTime: 2020-09-27 15:51:24
+ * @LastEditTime: 2020-09-27 17:06:27
  * @LastEditors: zhaojunyun-jk
  * @Description: In User Settings Edit
  * @FilePath: \Jerome-Blog\.vuepress\config.js
@@ -46,6 +46,7 @@ module.exports = {
                         ['vue/page2.md', 'directive'],
                         ['vue/page3.md', 'Vue 国际化'],
                         ['vue/page4.md', '动态主题'],
+                        ['vue/page5.md', '优化无限滚动加载，再多数据页面也不卡顿']
                     ]
                 },
                 {
