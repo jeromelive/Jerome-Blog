@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-07-13 15:02:34
- * @LastEditTime: 2020-07-29 16:11:25
+ * @LastEditTime: 2020-08-28 11:06:00
  * @LastEditors: zhaojunyun-jk
  * @Description: In User Settings Edit
  * @FilePath: \Jerome-Blog\pages\other\page11.md
@@ -39,7 +39,9 @@
   <div id="tap"></div>
   <script>
     Element.prototype.trigger = function (eventName) {
-      this.dispatchEvent(new Event(eventName))
+      var event = document.createEvent('Events'), bubbles = true
+      event.initEvent(eventName, bubbles, true)
+      this.dispatchEvent(event)
     }
     document.querySelector('#tap').addEventListener('click', click, false)
     document.querySelector('#tap').addEventListener('tap', tap, false)

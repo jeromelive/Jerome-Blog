@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-26 21:53:40
- * @LastEditTime: 2020-08-26 11:27:16
+ * @LastEditTime: 2020-09-27 15:51:24
  * @LastEditors: zhaojunyun-jk
  * @Description: In User Settings Edit
  * @FilePath: \Jerome-Blog\.vuepress\config.js
@@ -45,6 +45,16 @@ module.exports = {
                         ['vue/page1.md', 'vue-cli@3.0 相关配置'],
                         ['vue/page2.md', 'directive'],
                         ['vue/page3.md', 'Vue 国际化'],
+                        ['vue/page4.md', '动态主题'],
+                    ]
+                },
+                {
+                    title: 'Webpack',   // 必要的
+                    collapsable: false, // 可选的, 默认值是 true,
+                    sidebarDepth: 1,    // 可选的, 默认值是 1
+                    children: [
+                        ['webpack/page1.md', 'webpack'],
+                        ['webpack/page2.md', 'webpack 0 到 1'],
                     ]
                 },
                 {

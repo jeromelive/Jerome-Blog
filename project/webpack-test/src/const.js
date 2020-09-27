@@ -1,1 +1,0 @@
-export const company = '360金融'
