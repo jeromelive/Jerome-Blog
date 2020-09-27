@@ -4,7 +4,7 @@
  * @Autor: zhaojunyun-jk
  * @Date: 2020-09-27 15:58:45
  * @LastEditors: zhaojunyun-jk
- * @LastEditTime: 2020-09-27 17:10:47
+ * @LastEditTime: 2020-09-27 17:13:18
 -->
 # 优化无限滚动加载，再多数据页面也不会卡顿
 
@@ -118,7 +118,7 @@ export default class TestPage3 extends Component {
     ...
   ]
 
-  handleGoodsShow() {
+  handleScroll () {
     let goods = document.querySelectorAll(`.goods`)
     Array.prototype.forEach.call(goods, (div, innerIndex) => {
       let rect = div.getBoundingClientRect()
