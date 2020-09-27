@@ -4,7 +4,7 @@
  * @Autor: zhaojunyun-jk
  * @Date: 2020-09-27 15:58:45
  * @LastEditors: zhaojunyun-jk
- * @LastEditTime: 2020-09-27 17:09:11
+ * @LastEditTime: 2020-09-27 17:10:47
 -->
 # 优化无限滚动加载，再多数据页面也不会卡顿
 
@@ -135,9 +135,9 @@ export default class TestPage3 extends Component {
     return (
       data.map((outer, outerIndex) => {
         let {show, list} = outer
-        show && list && !list.length ? <div className="goods" key={outerIndex}>
+        list && !list.length ? <div className="goods" key={outerIndex}>
           {
-            list.map((inner, innerIndex) => {
+            show ? list.map((inner, innerIndex) => {
               let {src, title, subTitle} = inner
               return <div key={innerIndex}>
                 <img src={inner.src} />
@@ -145,6 +145,7 @@ export default class TestPage3 extends Component {
                 <p>{subTitle}</p>
               </div>
             })
+            : null
           }
         </div> : null
       })
