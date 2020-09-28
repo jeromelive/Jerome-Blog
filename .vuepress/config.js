@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-26 21:53:40
- * @LastEditTime: 2020-09-27 17:06:27
+ * @LastEditTime: 2020-09-28 10:24:16
  * @LastEditors: zhaojunyun-jk
  * @Description: In User Settings Edit
  * @FilePath: \Jerome-Blog\.vuepress\config.js
@@ -56,6 +56,7 @@ module.exports = {
                     children: [
                         ['webpack/page1.md', 'webpack'],
                         ['webpack/page2.md', 'webpack 0 到 1'],
+                        ['webpack/page3.md', 'webpack HMR解析'],
                     ]
                 },
                 {

@@ -1,0 +1,49 @@
+Arguments: 
+  D:\dev\nodejs\node.exe D:\dev\nodejs\node_modules\yarn\bin\yarn.js add @babel/preser-env
+
+PATH: 
+  C:\Program Files\Docker\Docker\Resources\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;D:\Program Files\Git\cmd;C:\Program Files (x86)\Google\Chrome\Application;D:\dev\nvm;D:\dev\nodejs;C:\Users\zhaojunyun-jk\AppData\Local\Microsoft\WindowsApps;C:\Users\zhaojunyun\scoop\shims;C:\Users\zhaojunyun\AppData\Local\Microsoft\WindowsApps;D:\Program Files\Microsoft VS Code\bin;C:\Users\zhaojunyun\AppData\Roaming\nvm;C:\Program Files\nodejs;D:\Program Files\mysql-8.0.19-winx64\bin;D:\Program Files\mysql-8.0.19-winx64\bin;D:\Anaconda3;D:\Anaconda3\Scripts;%PyCharm Community Edition%;;C:\Users\zhaojunyun-jk\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\zhaojunyun-jk\AppData\Local\Programs\Fiddler
+
+Yarn version: 
+  1.22.4
+
+Node version: 
+  10.13.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/@babel%2fpreser-env: Not found
+      at Request.params.callback [as _callback] (D:\dev\nvm\v10.13.0\node_modules\yarn\lib\cli.js:66987:18)
+      at Request.self.callback (D:\dev\nvm\v10.13.0\node_modules\yarn\lib\cli.js:140748:22)
+      at Request.emit (events.js:182:13)
+      at Request.<anonymous> (D:\dev\nvm\v10.13.0\node_modules\yarn\lib\cli.js:141720:10)
+      at Request.emit (events.js:182:13)
+      at IncomingMessage.<anonymous> (D:\dev\nvm\v10.13.0\node_modules\yarn\lib\cli.js:141642:12)
+      at Object.onceWrapper (events.js:273:13)
+      at IncomingMessage.emit (events.js:187:15)
+      at endReadableNT (_stream_readable.js:1094:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
+
+npm manifest: 
+  {
+    "name": "js-test",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "lodash": "^4.17.19"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
