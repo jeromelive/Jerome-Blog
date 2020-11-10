@@ -1,11 +1,11 @@
 /*
- * @Author: your name
+ * @Description: 
+ * @Version: 2.0
+ * @Autor: zhaojunyun-jk
  * @Date: 2020-05-26 21:53:40
- * @LastEditTime: 2020-09-28 10:24:16
  * @LastEditors: zhaojunyun-jk
- * @Description: In User Settings Edit
- * @FilePath: \Jerome-Blog\.vuepress\config.js
- */ 
+ * @LastEditTime: 2020-11-10 19:37:29
+ */
 module.exports = {
     title: `Jerome's Blog`, // 显示在左上角的网页名称以及首页在浏览器标签显示的title名称
     description: '前端记录', // meta 中的描述文字，用于SEO
@@ -57,6 +57,17 @@ module.exports = {
                         ['webpack/page1.md', 'webpack'],
                         ['webpack/page2.md', 'webpack 0 到 1'],
                         ['webpack/page3.md', 'webpack HMR解析'],
+                    ]
+                },
+                {
+                    title: 'Bebel 7',   // 必要的
+                    collapsable: false, // 可选的, 默认值是 true,
+                    sidebarDepth: 1,    // 可选的, 默认值是 1
+                    children: [
+                        ['babel/page1.md', 'babel 7'],
+                        ['babel/page2.md', '@babel/cli'],
+                        ['babel/page3.md', 'presets'],
+                        ['babel/page4.md', 'plugins'],
                     ]
                 },
                 {
