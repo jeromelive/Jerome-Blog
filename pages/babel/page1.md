@@ -4,7 +4,7 @@
  * @Autor: zhaojunyun-jk
  * @Date: 2020-11-10 16:04:23
  * @LastEditors: zhaojunyun-jk
- * @LastEditTime: 2020-11-10 17:59:46
+ * @LastEditTime: 2020-11-11 11:58:17
 -->
 # babel 7
 
@@ -266,3 +266,25 @@ typeof a === "undefined" ? "undefined" : (0, _typeof2["default"])(a);
 在引入了 `transform-runtime` 插件后：
 - `api` 从之前的直接修改原型改为了从一个统一的模块中引入，避免了对全局变量及其原型的污染，解决了第一个问题
 - `helpers` 从之前的原地定义改为了从一个统一的模块中引入，使得打包的结果中每个 `helper` 只会存在一个，解决了第二个问题
+
+## presets & plugins 执行顺序
+
+可以同时使用多个 Plugin 和 Preset，此时，它们的执行顺序非常重要。
+
+- 先执行完所有 Plugin，再执行 Preset。
+- 多个 Plugin，按照声明次序顺序执行。
+- 多个 Preset，按照声明次序逆序执行。
+- 比如 .babelrc配置如下，那么执行的顺序为：
+  - 1.Plugin：@babel/plugin-transform-runtime
+  - 2.Preset：@babel/preset-typescript、@vue/babel-preset-jsx、@babel/preset-env
+
+```json
+{
+  "presets": [
+    "@babel/preset-env",
+    "@vue/babel-preset-jsx",
+    "@babel/preset-typescript"
+  ],
+  "plugins": ["@babel/plugin-transform-runtime"]
+}
+```
