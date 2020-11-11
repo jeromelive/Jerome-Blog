@@ -57,4 +57,3 @@ npx babel script.js --out-file script-compiled.js
 | --presets |  | 预设 | `npx babel script.js --out-file script-compiled.js --presets=@babel/preset-env,@babel/flow` |
 | --no-babelrc |  | 忽略 .babelrc 文件 | `npx babel --no-babelrc script.js --out-file script-compiled.js --presets=es2015,react` |
 | --extensions |  | 文件后缀 | `npx babel script.js --out-file script-compiled.js --extensions \".ts,.tsx\"` |
-|  | -m | 输出文件模块 es6/commonjs  | `npx babel script.js --out-file script-compiled.js -m commonjs` |
