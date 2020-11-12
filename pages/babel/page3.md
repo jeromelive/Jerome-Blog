@@ -4,7 +4,7 @@
  * @Autor: zhaojunyun-jk
  * @Date: 2020-11-10 16:05:16
  * @LastEditors: zhaojunyun-jk
- * @LastEditTime: 2020-11-11 15:54:25
+ * @LastEditTime: 2020-11-11 17:09:06
 -->
 # presets
 
@@ -139,3 +139,9 @@ typeof a === "undefined" ? "undefined" : _typeof(a);
 ```
 
 输出的 compiler.js 只会引入代码中使用到的并且目标浏览器不支持的 poly-fill
+
+## 其他的 preset
+
+- @babel/preset-react
+- @babel/preset-typescript
+- @vue/babel-preset-jsx
