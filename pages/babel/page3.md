@@ -4,13 +4,44 @@
  * @Autor: zhaojunyun-jk
  * @Date: 2020-11-10 16:05:16
  * @LastEditors: zhaojunyun-jk
- * @LastEditTime: 2020-11-11 17:09:06
+ * @LastEditTime: 2020-11-13 15:07:12
 -->
 # presets
 
 ## @babel/preset-env
 
 Babel 7 是一系列插件的集合，不存在 Babel 6 中使用到的 es2015/es2016/es2017 等语法转换插件。
+
+### 配置参数
+- targets: 项目要支持的目标浏览器环境
+  - 示例环境： chrome, opera, edge, firefox, safari, ie, ios, android, node, electron
+
+占有率 > 0.25% 的浏览器
+```json
+{
+  "targets": "> 0.25%, not dead"
+}
+```
+最低环境版本支持的对象
+```json
+{
+  "targets": {
+    "chrome": "58",
+    "ie": "11"
+  }
+}
+```
+- loose: 允许所有插件启用“宽松”转换
+- modules: 指定输出文件的转换模块规范。一般在 webpack 项目中，将参数设置为 false，即将 module 交由 webpack 处理，而不是 babel.
+
+"amd" | "umd" | "systemjs" | "commonjs" | "cjs" | "auto" | false, defaults to "auto"
+
+- useBuiltIns: polyfill 的处理方式
+  - usage：按需引入
+  - entry：入口文件全局引入
+  
+- corejs: 指定 corejs 的版本，默认为 2
+- configPath: 搜索配置文件的路劲，默认为 process.cwd()
 
 ## @babel/poly-fill
 
