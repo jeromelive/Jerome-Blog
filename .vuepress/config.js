@@ -75,7 +75,7 @@ module.exports = {
                     collapsable: false, // 可选的, 默认值是 true,
                     sidebarDepth: 1,    // 可选的, 默认值是 1
                     children: [
-                        ['other/page1.md', '深色模式开发'],
+                        ['other/page1.md', 'requestAnimationFrame、requestIdleCallback、IntersectionObserver'],
                         ['other/page2.md', '前端安全'],
                         ['other/page3.md', '数字动态累加特效'],
                         ['other/page4.md', '本地缓存静态资源'],
