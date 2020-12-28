@@ -55,8 +55,8 @@ module.exports = {
                     sidebarDepth: 1,    // 可选的, 默认值是 1
                     children: [
                         ['webpack/page1.md', 'webpack'],
-                        ['webpack/page2.md', 'webpack 0 到 1'],
-                        ['webpack/page3.md', 'webpack HMR解析'],
+                        ['webpack/page2.md', 'optimization.splitChunks'],
+                        // ['webpack/page3.md', 'webpack HMR解析'],
                     ]
                 },
                 {
