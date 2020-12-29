@@ -238,6 +238,151 @@ ReactDOM.render(<App />, document.getElementById('root'))
 - 只算js文件的请求，css不算在内
 - 如果同时又两个模块满足cacheGroup的规则要进行拆分，但是maxInitialRequests的值只能允许再拆分一个模块，那尺寸更大的模块会被拆分出来
 
+ `optimization.splitChunks.maxInitialRequests` 改为 `2`
+ ```js
+ module.exports = {
+  entry: {
+    entry1: './src/entry1.js',
+    entry2: './src/entry2.js',
+    entry3: './src/entry3.js'
+  },
+  output: {
+    path: path.join(__dirname, './dist'),
+    chunkFilename: '[name].js',
+    filename: '[name].js'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
+      }
+    ]
+  },
+
+  optimization: {
+    splitChunks: {
+      chunks: 'initial',
+      maxInitialRequests: 2,
+      cacheGroups: { // 核心，打包策略
+        defaultVendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+          reuseExistingChunk: true
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
+        }
+      }
+    }
+  }
+}
+
+// src/entry1.js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import $ from './assets/jquery'
+import OrgChart from './assets/orgchart'
+
+const App = () => {
+  OrgChart()
+  console.log($)
+  return (
+    <div>
+      <div>App</div>
+    </div>
+  )
+}
+ReactDOM.render(<App />, document.getElementById('root'))
+
+// src/entry2.js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import $ from './assets/jquery'
+
+const App = () => {
+  console.log($)
+  return (
+    <div>
+      <div>entry2</div>
+    </div>
+  )
+}
+ReactDOM.render(<App />, document.getElementById('root'))
+
+// src/entry3.js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import OrgChart from './assets/orgchart'
+
+const App = () => {
+  OrgChart()
+  return (
+    <div>
+      <div>App</div>
+    </div>
+  )
+}
+
+ReactDOM.render(<App />, document.getElementById('root'))
+ ```
+
+输出文件如下：
+
+![](/Jerome-Blog/webpack-page2-5.png)
+
+分析：
+- entry1.js：入口文件
+- entry2.js：入口文件
+- entry3.js：入口文件
+- vendor-entry1-entry2-entry3.js：maxInitialRequests 为 2 并且 cacheGroups.defaultVendors.priority 比 cacheGroups.default.priority 优先级高，所以文件内容为 react-dom。文件内引入的 jquery 和 orgchart 并没有被拆分出来，任然在各个入口文件 chunk 内。
+
+修改 cacheGroups.default.priority 比 cacheGroups.defaultVendors.priority 优先级更高
+
+```js
+ module.exports = {
+  ...
+  optimization: {
+    splitChunks: {
+      chunks: 'initial',
+      maxInitialRequests: 2,
+      cacheGroups: { // 核心，打包策略
+        defaultVendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -30,
+          reuseExistingChunk: true
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
+        }
+      }
+    }
+  }
+  ...
+}
+```
+
+输出文件如下：
+
+![](/Jerome-Blog/webpack-page2-6.png)
+
+修改优先级文件输出内容不变
+
+`optimization.splitChunks.maxInitialRequests` 改为 `3`
+
+![](/Jerome-Blog/webpack-page2-7.png)
+
+`optimization.splitChunks.maxInitialRequests` 改为 `4`
+
+ ![](/Jerome-Blog/webpack-page2-8.png)
+
+可以看到公共文件被逐渐拆分出来
+
 ## maxAsyncRequests
 
 `maxAsyncRequests` 和 `maxInitialRequests `有相似之处，它俩都是用来限制拆分数量的，`maxInitialRequests` 是用来限制入口的拆分数量而 `maxAsyncRequests `是用来限制异步模块内部的并行最大请求数的，说白了你可以理解为是每个 `import()` 它里面的最大并行请求数量。
