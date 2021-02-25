@@ -9,6 +9,8 @@
 
 # optimization.splitChunks
 
+对于动态导入模块，默认使用 `webpack v4+` 提供的全新的通用分块策略(common chunk strategy)。
+
 ## 默认配置
 ```js
 module.exports = {
