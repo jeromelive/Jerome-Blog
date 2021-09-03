@@ -11,7 +11,10 @@ module.exports = {
     description: '前端记录', // meta 中的描述文字，用于SEO
     // 注入到当前页面的 HTML <head> 中的标签
     head: [
-        ['link', { rel: 'icon', href: '/logo.svg' }],  //浏览器的标签栏的网页图标
+        ['link', {
+            rel: 'icon',
+            href: '/logo.svg'
+        }], //浏览器的标签栏的网页图标
     ],
     markdown: {
         lineNumbers: true
@@ -22,8 +25,10 @@ module.exports = {
     themeConfig: {
         logo: '/logo.svg',
         lastUpdated: 'lastUpdate', // string | boolean
-        nav: [
-            { text: '首页', link: '/' },
+        nav: [{
+                text: '首页',
+                link: '/'
+            },
             //   {
             //       text: '分类',
             //       ariaLabel: '分类',
@@ -36,11 +41,10 @@ module.exports = {
             //   { text: 'Github', link: 'https://github.com/dwanda' },
         ],
         sidebar: {
-            '/pages/': [
-                {
-                    title: 'Vue相关',   // 必要的
+            '/pages/': [{
+                    title: 'Vue相关', // 必要的
                     collapsable: false, // 可选的, 默认值是 true,
-                    sidebarDepth: 1,    // 可选的, 默认值是 1
+                    sidebarDepth: 1, // 可选的, 默认值是 1
                     children: [
                         ['vue/page1.md', 'vue-cli@3.0 相关配置'],
                         ['vue/page2.md', 'directive'],
@@ -50,9 +54,9 @@ module.exports = {
                     ]
                 },
                 {
-                    title: 'Webpack',   // 必要的
+                    title: 'Webpack', // 必要的
                     collapsable: false, // 可选的, 默认值是 true,
-                    sidebarDepth: 1,    // 可选的, 默认值是 1
+                    sidebarDepth: 1, // 可选的, 默认值是 1
                     children: [
                         ['webpack/page1.md', 'webpack'],
                         ['webpack/page2.md', 'optimization.splitChunks'],
@@ -60,9 +64,9 @@ module.exports = {
                     ]
                 },
                 {
-                    title: 'Bebel 7',   // 必要的
+                    title: 'Bebel 7', // 必要的
                     collapsable: false, // 可选的, 默认值是 true,
-                    sidebarDepth: 1,    // 可选的, 默认值是 1
+                    sidebarDepth: 1, // 可选的, 默认值是 1
                     children: [
                         ['babel/page1.md', 'babel 7'],
                         ['babel/page2.md', '@babel/cli'],
@@ -71,9 +75,9 @@ module.exports = {
                     ]
                 },
                 {
-                    title: '琐碎',   // 必要的
+                    title: '琐碎', // 必要的
                     collapsable: false, // 可选的, 默认值是 true,
-                    sidebarDepth: 1,    // 可选的, 默认值是 1
+                    sidebarDepth: 1, // 可选的, 默认值是 1
                     children: [
                         ['other/page1.md', 'requestAnimationFrame、requestIdleCallback、IntersectionObserver'],
                         ['other/page2.md', '前端安全'],
@@ -94,7 +98,7 @@ module.exports = {
                         ['other/page17.md', 'JsBridge：Web 和客户端双向通信'],
                         ['other/page18.md', '深入了解 js 柯里化'],
                         ['other/page19.md', 'git 常用操作'],
-                        ['other/page20.md', 'flow'],
+                        ['other/page20.md', '节流/防抖'],
                     ]
                 }
             ]
