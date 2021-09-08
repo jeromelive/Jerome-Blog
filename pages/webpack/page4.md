@@ -37,6 +37,7 @@ px转rem，补充前置
 lodash 按需加载，减少 lodash 体积
 
 ## babel-plugin-import
+自动按需加载
 
 ## webpack-bundle-analyzer
 webpack 打包分析工具

@@ -26,4 +26,24 @@ Function.prototype.bind1 = function(context) {
     return context.fn(...[...args, ...arguments])
   }
 }
+
+// 3.绑定函数当做构造函数使用，new 操作符创建对象
+Function.prototype.bind1= function(context) {
+  const self = this
+  context = context ? Object(context): context
+  const args = [...arguments].slice(1)
+  const fBound =  function() {
+    let result
+    if(this instanceof fBound) {
+      this.fn = self
+      result = this.fn(...[...args, ...arguments])
+    } else {
+      context.fn = self
+      result = context.fn(...[...args, ...arguments])
+    }
+    return result
+  }
+  fBound.prototype = this.prototype
+  return fBound
+}
 ```
