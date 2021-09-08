@@ -99,6 +99,10 @@ module.exports = {
                         ['other/page18.md', '深入了解 js 柯里化'],
                         ['other/page19.md', 'git 常用操作'],
                         ['other/page20.md', '节流/防抖'],
+                        ['other/page21.md', 'new'],
+                        ['other/page22.md', 'call/apply'],
+                        ['other/page23.md', 'bind'],
+                        ['other/page24.md', 'package.json'],
                     ]
                 }
             ]
