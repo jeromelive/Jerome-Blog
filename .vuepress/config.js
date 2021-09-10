@@ -103,6 +103,7 @@ module.exports = {
                         ['other/page22.md', 'call/apply'],
                         ['other/page23.md', 'bind'],
                         ['other/page24.md', 'package.json'],
+                        ['other/page25.md', 'JavaScript 继承'],
                     ]
                 }
             ]
